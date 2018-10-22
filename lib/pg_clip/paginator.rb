@@ -11,7 +11,9 @@ module PgClip
     end
 
     def records
-      JSON.parse "[" + execute_query(query).map { |r| r['record'] }.join(',') + "]"
+      execute_query(query).map do |r|
+        JSON.parse(r['record'], max_nesting: 1) # it's flat structure
+      end
     end
 
     private
