@@ -1,13 +1,10 @@
 module PgClip
   class Paginator
-    attr_accessor :query
+    attr_accessor :query, :connection
 
-    def initialize(query)
-      @query    = query
-    end
-
-    def connection
-      ActiveRecord::Base.connection
+    def initialize(query, connection)
+      @query      = query
+      @connection = connection
     end
 
     def records

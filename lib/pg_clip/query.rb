@@ -1,12 +1,7 @@
 module PgClip
   class Query
-    def initialize(path)
-      @path      = path
-      @template  = Dir.chdir(BASE_DIR) { Liquid::Template.parse File.read("#{path}.sql") }
-    end
-
-    def per_page
-      1000
+    def initialize(sql_template)
+      @template  = Liquid::Template.parse(sql_template)
     end
 
     def query(params = {})

@@ -1,8 +1,6 @@
 module SqlFilters
   def quote_literals(input)
-    input.map do |item|
-      item.is_a?(String) ? "'#{item}'" : item
-    end
+    input.map { |item| item.is_a?(String) ? "'#{item}'" : item }
   end
 end
 
