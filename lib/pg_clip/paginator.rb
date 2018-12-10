@@ -13,8 +13,6 @@ module PgClip
       end
     end
 
-    private
-
     def execute_query(query)
       connection.execute <<-SQL
         WITH insight AS (#{query})
