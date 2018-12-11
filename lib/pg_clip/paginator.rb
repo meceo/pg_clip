@@ -15,6 +15,8 @@ module PgClip
 
     def execute_query(query)
       connection.execute <<-SQL
+        BEGIN READ ONLY;
+        SET intervalstyle = 'iso_8601';
         WITH insight AS (#{query})
 
         SELECT
@@ -27,6 +29,8 @@ module PgClip
       offset = (page - 1) * per_page
 
       connection.execute <<-SQL
+        BEGIN READ ONLY;
+        SET intervalstyle = 'iso_8601';
         WITH insight AS (#{query}), stats AS (
           SELECT
            #{page}                                 AS page,
