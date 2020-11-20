@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pg_clip (0.1.0)
+    pg_clip (0.1.4)
       liquid
       pg
 
